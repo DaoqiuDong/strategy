@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>tree</title>
+    <link rel="stylesheet" href="../../css/cssreset.css">
+    <link rel="stylesheet" href="../../css/tree.css">
+    <![if !IE]>
+    <script src="../../js/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <![endif]>
+    <!--[if gte IE 6]>
+      <script src="../../js/jquery-1.8.2.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="main"></div>
+    <div id="tool">
+        <span class="addNode">添加子节点</span>
+        <span class="edit">编辑</span>
+        <span class="modify">修改触发条件</span>
+        <span class="del">删除</span>
+        <span class="save">保存</span>
+    </div>
+    <div id="ruleDetail">
+        <h3>选择规则</h3>
+        <select class="selectContent">
+            <option value="">请选择规则</option>
+        </select>
+        <h3 class="info"></h3>
+        <div class="detailContent"></div>
+    </div>
+
+</body>
+  <script src="../../js/public.js" charset="utf-8"></script>
+  <script src="../../js/util.js" charset="utf-8"></script>
+  <script src="../../js/layer/layer.js" charset="utf-8"></script>
+  <script src="../../js/echart/echarts-all.js"></script>
+  <script src="../../js/rule/tree.js" charset="utf-8"></script>
+
+</html>

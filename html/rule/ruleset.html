@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>strategy</title>
+    <link rel="stylesheet" href="css/cssreset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-1.8.2.min.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <div class="content">
+        <div id="main">
+            <div class="line1 blockbox">
+                <div class="row1">
+                    <div class="block" data-line="1line" data-row="1row">start</div>
+                </div>
+            </div>
+        </div>
+        <canvas id="linecanvas"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    $(function() {
+        var rule = "";
+        var canvas = document.getElementById("linecanvas"); //canvas对象
+        var operation = "add"; //用户操作，包括添加(add)，删除(delete)，连接(connect),无操作(none)
+
+        //屏幕尺寸resize事件
+        $(window).resize(function() {
+            resizeCanvas(canvas); //canvas尺寸控制
+            reversedraw(rule); //canvas重绘
+        });
+
+        //生成事件
+        $("#main").on("click", ".block", function() {
+            var $this = $(this);
+            var line = parseInt($this.data("line")); //取当前行
+            var index = ($this.parents(".blockbox").find(".block")).index($(this)) + 1; //取当前点击block位置
+            if (operation == "add") {
+                resizeCanvas(canvas); //canvas尺寸控制
+                createbox($this, line, index); // 生成行列
+                createblock(line, index); // 生成块
+                // draw($this, rule);
+                reversedraw(rule); //canvas重绘
+            } else if (operation == "delete") {
+
+            } else if (operation == "connect") {
+
+            } else if (operation == "none") {
+
+            }
+        });
+
+        // 行列生成方法
+        function createbox(select, line, index) {
+            var addline = line + 1;
+            var rowindex = index - 1;
+            var boxhtml = "";
+            var rowlen = select.parents(".blockbox").find(".block").length;
+            if (!$(".line" + addline).length) {
+                boxhtml += "<div class='line" + addline + " blockbox'>";
+                for (var i = 1; i <= rowlen; i++) {
+                    boxhtml += "<div class='row" + i + "' data-fatherrow='" + i + "'></div>";
+                };
+                boxhtml += "</div>";
+                select.parents(".blockbox").after(boxhtml);
+            } else {
+                if (rowlen != $(".line" + addline).children("div[class*='row']").length) {
+                    var prelen = $(".line" + addline).children("div[class*='row']").length;
+                    for (var j = 1; j <= rowlen; j++) {
+                        if (!$(".line" + addline).children(".row" + j).length) {
+                            var ji = j - 1;
+                            boxhtml = "<div class='row" + j + "' data-fatherrow='" + j + "'></div>";
+                            $(".line" + addline).children(".row" + ji).after(boxhtml);
+                        }
+                    };
+                };
+
+            };
+
+        };
+
+        //css样式调节方法
+        function widthcontrol(width) {
+
+        }
+        // 块生成方法
+        function createblock(line, index) {
+            var addline = line + 1;
+            var findblockline = line + 2;
+            var blockhtml = '<div class="block" data-line="' + addline + 'line" data-row="' + index + 'row">' + addline + ',' + index + '</div>';
+            $(".line" + addline).children(".row" + index).append(blockhtml);
+            if ($(".line" + findblockline).length != 0) {
+                var addindex = ($(".line" + addline).find(".block")).index($(".line" + addline).children(".row" + index).find(".block:last"));
+                console.log(addindex);
+                $(".line" + findblockline).children("div[class*='row']").slice(addindex).each(function() {
+                    var newrow = $(this).data("fatherrow") + 1;
+                    $(this).attr("class", "row" + newrow);
+                    $(this).attr("data-fatherrow", newrow);
+                    $(this).children(".block").attr("data-row", newrow + "row");
+                })
+            }
+        };
+
+        //canvas宽高自适应
+        function resizeCanvas(canvas) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+
+        //反向历遍canvas画线方法
+        function reversedraw(rule) {
+            $(".block").each(function() {
+                if ($(this).data("line") != "1line") {
+                    var fatherrow = parseInt($(this).attr("data-row")) - 1;
+                    var start = $(this).offset();
+                    var end = $(this).parents(".blockbox").prev(".blockbox").find(".block").eq(fatherrow).offset();
+                    if (canvas.getContext) {
+                        var line = canvas.getContext("2d");
+                        var left = (end.left - start.left) / 2 + start.left + 30;
+                        var top = (end.top - start.top) / 2 + start.top + 16;
+                        line.beginPath();
+                        line.strokeStyle = "rgba(0, 0, 0, .5)";
+                        line.lineWidth = 1;
+                        line.moveTo(start.left + 20, start.top + 10);
+                        line.lineTo(start.left + 20, start.top);
+                        line.lineTo(end.left + 20, end.top + 30);
+                        line.lineTo(end.left + 20, end.top + 10);
+                        line.stroke();
+                        line.font = "20px serif";
+                        line.fillText(rule, left, top);
+                    }
+                }
+            })
+        }
+
+        //正向canvas画线方法
+        // function draw(select, rule) {
+        //       var selectline = parseInt(select.data("line")) - 1;
+        //       var selectindex = $(".blockbox").eq(selectline).index(select);
+        //       // var selectindex = select.index($(".blockbox").eq(line).children(".block:first"));
+        //
+        //       var start = select.offset();
+        //       var end = select.parents(".blockbox").next(".blockbox").children("div[class*='row']").eq(selectindex).children(".block:last").offset();
+        //       if (canvas.getContext) {
+        //           var line = canvas.getContext("2d");
+        //           var left = (end.left - start.left) / 2 + start.left + 30;
+        //           var top = (end.top - start.top) / 2 + start.top + 16;
+        //           line.strokeStyle = "rgba(0, 0, 0, .5)";
+        //           line.lineWidth = 1;
+        //           line.moveTo(start.left + 40, start.top + 10);
+        //           line.lineTo(end.left + 40, end.top + 10);
+        //           line.stroke();
+        //           line.font = "20px serif";
+        //           line.fillText(rule, left, top);
+        //       }
+        // }
+    })
+</script>
+
+</html>

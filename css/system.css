@@ -1,0 +1,552 @@
+
+body {
+    line-height: 1.6;
+    font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "\9ED1\4F53", Arial, sans-serif;
+    color: #222;
+    font-size: 14px;
+    background-color: #fafafa;
+    overflow-y: scroll;
+}
+
+
+/*顶部div*/
+
+.top {
+    background-color: #21262f;
+    width: 100%;
+    min-width: 1380px;
+    height: 50px;
+    color: #fff;
+    overflow: hidden;
+    position: fixed;
+    z-index: 2
+}
+
+.logo {
+    height: 100%;
+    float: left
+}
+
+.logo img {
+    height: 32px;
+    margin-top: 9px;
+    margin-left: 40px;
+}
+
+
+/*管理员设置*/
+
+.tab {
+    float: right;
+    height: 100%;
+}
+.tab_href_list {
+    display: inline-block;
+    padding:6px 20px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 18px;
+    color:#bbbcbc;
+    text-align: center;
+}
+.tab_href_list a{
+  padding: 12px;
+  color:#ccc;
+}
+.tab_active a{
+  color: #fff;
+}
+.tab_active a{
+  border-bottom: 2px solid #3cb4f9;
+
+}
+.tab_href{
+  float: left;
+}
+.tab_exit{
+  float: right;
+  margin-top: 7px;
+  width: 250px;
+}
+.tab_exit p{
+  display: inline;
+  font-size: 18px;
+  padding: 1px 20px;
+  line-height: 36px;
+  border-left: 1px solid #fff;
+  color:#39a6e5;
+}
+.tab_exit .username{
+  display: inline-block;
+}
+.tab_exit a{
+  margin-left: 10px;
+  color: #fff
+}
+/*left-菜单*/
+
+.left-menu {
+    position: fixed;
+    float: left;
+    top:0;
+    bottom: 0;
+    min-height: 100%;
+    width: 190px;
+    margin-top: 50px;
+    background: #323842;
+}
+
+.menu {
+    float: left;
+    width: 100%;
+    list-style: none;
+    line-height: 46px;
+    overflow: hidden;
+}
+
+.menu_list a{
+  display: block;
+    width: 100%;
+    color: #ccc;
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+    font-size: 18px;
+}
+
+.menu_list>a:hover{
+  color: #fff;
+  background: #2e3035;
+}
+.menu_list li:hover {
+    color: #fff;
+    background: #2e3035;
+}
+
+.menu_active>a{
+  display: block;
+  color: #fff;
+    background: #21262f;
+    border-left: 4px solid #3cb4f9;
+    text-decoration: none;
+}
+
+.menu_list .menu_lists_active{
+  color:#fff;
+  text-decoration:underline;
+}
+.menu_list li a{
+  font-size: 16px;
+  line-height: 36px;
+}
+
+/*main内容显示*/
+
+.right-content {
+    background: #f8f8f8;
+    min-width: 970px;
+}
+.content{
+  overflow: hidden;
+  width: 100%;
+}
+.page_content {
+  width: calc(100% + 20px);
+  overflow-y: scroll;
+}
+.page_box{
+  display: none;
+}
+.page_active{
+  display: block;
+}
+
+div[class*="_table"]{
+  padding:20px 60px 30px 20px;
+}
+div[id*="_table"]{
+  height: 600px;
+  padding:20px 60px 30px 10px;
+
+}
+ table{
+  width: 100%;
+  box-shadow: 0 0 4px rgb(214, 214, 214);
+  border-radius: 6px;
+}
+table tr{
+  height: 42px;
+  line-height: 42px;
+}
+ table td{
+  padding-left: 20px;
+}
+ table tr:nth-child(odd){
+  background: #fafafa;
+}
+ table td a{
+  color:#3399ff;
+}
+
+
+.systemsetting_block{
+  background: #fff;
+  box-shadow: 0 0 4px rgb(214, 214, 214);
+  margin: 4px;
+}
+.systemsetting_search{
+  padding: 20px 60px 20px 20px;
+}
+.systemsetting_search form{
+  line-height: 30px;
+  padding: 10px 20px 10px 10px;
+  border: 1px solid #ccc;
+  min-width: 800px;
+}
+.systemsetting_search input,.systemsetting_search select{
+  height: 30px;
+  width: 160px;
+  padding-left: 10px;
+  font-size: 16px;
+}
+.systemsetting_search input[type=submit]{
+  background: #3cb4f9;
+  border: 0;
+  border-radius: 4px;
+  color:#fff;
+}
+.add_package h2{
+  line-height: 36px;
+  padding: 10px 30px;
+  font-size: 18px;
+}
+.add_package_form{
+  padding: 20px 30px;
+}
+.add_package_form li{
+  margin-bottom: 20px;
+  line-height: 36px;
+  font-size: 16px;
+  list-style: none;
+}
+.add_package_form span{
+  width: 100px;
+  display: inline-block;
+}
+.add_package_form input[type=tel]{
+  height: 36px;
+  width: 380px;
+  border: 1px solid rgb(205, 205, 205);
+  border-radius: 4px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.textarea{
+  display: inline-block;
+}
+.add_package_form textarea{
+  width: 380px;
+  height: 120px;
+  resize: none;
+  line-height: 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid rgb(215, 215, 215);
+  padding-left: 10px;
+}
+.add_package_form input[type=submit]{
+  width: 200px;
+  height: 30px;
+  background: #3cb4f9;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  margin-left: 104px;
+}
+.system_status,.system_search{
+  line-height: 36px;
+  padding: 20px 30px;
+  font-size: 18px;
+}
+.system_status_box{
+  padding: 10px 20px;
+  border: 1px solid rgb(198, 198, 198);
+}
+.system_status_box span{
+  margin-right: 50px;
+}
+.system_search form{
+  padding: 10px 10px;
+  border: 1px solid rgb(198, 198, 198);
+}
+.system_search input{
+  width: 160px!important;
+  height: 36px;
+  padding-left: 10px;
+  margin-right: 10px;
+  border: 1px solid rgb(213, 213, 213);
+}
+.system_search input[type=submit]{
+  width: 200px;
+  background: #3db5f2;
+  color: #fff;
+  border-radius: 4px;
+  border: 0;
+  margin: 0!important;
+}
+.system_search table{
+  box-shadow: none
+}
+.system_search table tr{
+  background: #fff;
+}
+.package_checkbox{
+  padding-bottom: 40px;
+  box-shadow: 0 0 4px rgb(214, 214, 214);
+  margin-bottom: 20px;
+  background: #fcfcfc
+}
+.package_checkbox h2{
+  line-height: 36px;
+  font-size: 18px;
+  background: #f2f2f2;
+  padding: 2px 20px;
+}
+.package_checkbox h2 strong{
+  color:red;
+}
+.package_list::after{
+  content: "";
+  display: block;
+  clear: both;
+  height: 0;
+  font-size: 0
+}
+.package_list_left{
+  float: left;
+  width: 40%;
+}
+.package_list_right{
+  float: right;
+  width: 40%;
+  height: 100%;
+}
+.package_list_left table,.package_list_right table{
+  box-shadow: none;
+  border: 1px solid rgb(236, 236, 236);
+}
+.package_checkbox table tr{
+  background: #fff;
+}
+.package_checkbox table tr:first-child{
+  border: 1px solid #e3e3e3;
+  background: #fcfcfc;
+}
+.package_list_operation{
+  width: 20%;
+  float: left;
+}
+.package_list_operation div{
+  width: 60px;
+  height: 30px;
+  background: #4cbdff;
+  border: 0;
+  color:#fff;
+  text-align: center;
+  margin: 80px auto;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.systemsetting_block{
+  box-shadow: 0 0 4px rgb(214, 214, 214);
+  padding: 20px;
+  margin: 4px;
+  list-style: none;
+  background: #fff;
+}
+.systemsetting_block:first-child{
+  padding: 20px;
+}
+.systemsetting_block li{
+  margin-bottom: 14px;
+}
+.systemsetting_block span{
+  display: inline-block;
+  width: 160px;
+}
+.systemsetting_block input{
+  line-height: 32px;
+  border-radius: 4px;
+  border: 1px solid rgb(218, 218, 218);
+  padding-left: 10px;
+  width: 284px;
+  display: inline;
+}
+.systemsetting_block input[type=submit]{
+  margin-left: 115px;
+  width: 300px;
+  line-height: 36px;
+  background: #3cb4f9;
+  color:#fff
+}
+.systemsetting_block input[type=checkbox]{
+  width: 30px;
+}
+.systemsetting_block select{
+  width: 280px;
+}
+.admin_add li{
+  width: 100%;
+}
+.admin_add li label{
+  float: left;
+}
+.admin_add li::after{
+  content: "";
+  display: block;
+  clear: both;
+  height: 0;
+  font-size: 0
+}
+.admin_add input[type=submit]{
+  margin: 0;
+  width: 200px;
+}
+form table{
+  width: auto;
+}
+.systemsetting_layer{
+  display: none;
+  position: fixed;
+  z-index: 99;
+  top:0;
+  bottom: 0;
+  left:0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  list-style: none;
+}
+.systemsetting_layer>div{
+  width: 450px;
+  background: #fff;
+  display: none;
+  margin: 10% auto;
+  border-radius: 10px;
+  box-shadow: 0 0 4px rgb(214, 214, 214);
+  padding: 40px;
+}
+.systemsetting_layer form{
+  padding-bottom: 20px;
+}
+.systemsetting_layer li{
+  height: 36px;
+  line-height: 36px;
+  font-size: 16px;
+}
+.systemsetting_layer li span{
+  width: 80px;
+  display: inline-block;
+}
+.systemsetting_layer li p{
+  margin: 0
+}
+.systemsetting_layer input[type="text"]{
+  width: 350px;
+  padding-left: 10px;
+  height: 36px;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 4px;
+}
+.systemsetting_layer input[type="password"]{
+  width: 350px;
+  padding-left: 10px;
+  height: 36px;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 4px;
+}
+.systemsetting_layer input[type="submit"]{
+  width: 140px;
+  height: 36px;
+  background: #4cbdff;
+  border: 0;
+  color:#fff;
+  cursor: pointer;
+  float: left;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.systemsetting_layer select{
+  width:80%;
+  height: 36px;
+}
+.systemsetting_layer input[type="button"]{
+  width: 140px;
+  height: 36px;
+  background: #fff;
+  border: 1px solid rgb(221, 221, 221);
+  margin: 20px 0;
+  cursor: pointer;
+  float: right;
+  border-radius: 4px;
+}
+.updateUserPwd{
+  cursor: pointer;
+  color: #3cb4f9
+}
+.updateUser{
+  cursor: pointer;
+  color: #3cb4f9
+}
+.deleteUser{
+  cursor: pointer;
+  color: #3cb4f9
+}
+.queryPrv{
+  cursor: pointer;
+  color: #3399ff;
+}
+.queryPrvList{
+  cursor: pointer;
+  color: #3cb4f9
+}
+.updateRole{
+  cursor: pointer;
+  color: #3cb4f9
+}
+.deleteRole{
+  cursor: pointer;
+  color: #3cb4f9
+}
+.prvlist_checkbox label{
+  width: 50%;
+  line-height: 32px;
+  float: left;
+}
+.prvlist_checkbox input{
+  width: 20px;
+}
+.prvlist_checkbox::after{
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+textarea{
+  resize: none;
+  width: 80%
+}
+#saveRole ul{
+  width: 640px;
+}
+#saveRole ul::after{
+  content: "";
+  clear: both;
+  display: block;
+  height: 0
+}
+#saveRole ul li{
+  display: inline-block;
+  float: left;
+  width: 300px;
+}
